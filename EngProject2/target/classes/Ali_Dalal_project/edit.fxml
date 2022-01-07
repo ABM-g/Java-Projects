@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="720.0" prefWidth="1000.0" stylesheets="@BasicApplication.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ali_Dalal_project.editCon">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <HBox id="mainp" prefHeight="720.0" prefWidth="1000.0" stylesheets="@BasicApplication.css">
+               <children>
+                  <Pane id="pane" prefHeight="720.0" prefWidth="431.0" style="-fx-background-repeat: no-repeat;" stylesheets="@BasicApplication.css" />
+                  <VBox prefHeight="720.0" prefWidth="699.0" style="-fx-alignment: center;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="130.0" prefWidth="496.0" text="Blue Wave Harbor" textFill="#18696b">
+                           <font>
+                              <Font name="Segoe UI Bold" size="39.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="634.0">
+                           <children>
+                              <Label text="Search : " textFill="#07f3ff">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="searchtext" prefHeight="35.0" prefWidth="289.0" promptText="Park ID" style="-fx-font-size: 16px;" />
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tableV" onMouseClicked="#getSelected" prefHeight="335.0" prefWidth="628.0">
+                          <columns>
+                            <TableColumn fx:id="tableP" prefWidth="75.0" text="Park ID" />
+                              <TableColumn fx:id="tablePAt" prefWidth="71.0" text="Park At" />
+                              <TableColumn fx:id="tableDate" prefWidth="105.0" text="Park Date" />
+                            <TableColumn fx:id="tableS" minWidth="0.0" prefWidth="126.0" text="Ship ID" />
+                              <TableColumn fx:id="tableW" prefWidth="119.0" text="Weight" />
+                              <TableColumn fx:id="tableF" prefWidth="127.0" text="Fee" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </TableView>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                           <children>
+                              <Button id="btn1" fx:id="editBtn" alignment="CENTER" mnemonicParsing="false" onAction="#edit" prefHeight="41.0" prefWidth="105.0" stylesheets="@BasicApplication.css" text="EDIT" visible="false" />
+                              <Button id="btn1" fx:id="delBtn" alignment="CENTER" mnemonicParsing="false" onAction="#delete" prefHeight="38.0" prefWidth="100.0" stylesheets="@BasicApplication.css" text="DELETE" visible="false" />
+                              <Pane nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="371.0">
+                                 <children>
+                                    <Button id="btn1" alignment="CENTER" layoutX="2.0" layoutY="31.0" mnemonicParsing="false" onAction="#exit" prefHeight="38.0" prefWidth="100.0" text="EXIT" />
+                                    <Button id="btn1" alignment="CENTER" layoutX="253.0" layoutY="31.0" mnemonicParsing="false" onAction="#switchToAdd" prefHeight="39.0" prefWidth="99.0" stylesheets="@BasicApplication.css" text="ADD" />
+                                    <Button id="btn1" alignment="CENTER" layoutX="128.0" layoutY="31.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="38.0" prefWidth="100.0" text="HOME" />
+                                 </children>
+                              </Pane>
+                           </children>
+                           <padding>
+                              <Insets left="12.0" right="12.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
