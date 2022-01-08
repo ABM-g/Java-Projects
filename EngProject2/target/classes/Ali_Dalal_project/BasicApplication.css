@@ -23,7 +23,11 @@
 	-fx-text-fill: #00FFF7;
 	-fx-font-size: 18px;
 }
-
+#btn2{
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
 #add_text{
 	-fx-text-fill: #00FFF7;
 	-fx-font-size: 18px;
@@ -128,11 +132,11 @@
     -fx-text-fill: #00FFF7;
     -fx-background-color: #1e3535;
 }
-#rig: hover{
+#rig:hover{
     -fx-text-fill: #ff9d00;
     -fx-underline: true;
 }
-#rig: pressed{
+#rig:pressed{
 	-fx-text-fill: white;
 
 }
