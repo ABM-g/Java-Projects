@@ -3,6 +3,9 @@ package Ali_Dalal_project;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -99,6 +105,7 @@ public class AddCon implements Initializable {
     private final ToggleGroup group = new ToggleGroup();
     private String selcRadio="PL1";
     private boolean chSid=false,chW=false,chfee=true;
+    static String selsidstage="";
     @FXML
     void add(ActionEvent event) {
             theFee.setVisible(false);
@@ -168,6 +175,24 @@ public class AddCon implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    void showSelect(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("selectShip.fxml"));
+        stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.focusedProperty().addListener(new ChangeListener<Boolean>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean onHidden, Boolean onShown)
+            {
+                ITBox.setText(selsidstage);
+            }
+        });
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Select Ship");
+        stage.show();
+    }
     public boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
@@ -184,11 +209,15 @@ public class AddCon implements Initializable {
         addBtn.setDisable(false);
     else addBtn.setDisable(true);
     }
+    public void setSelected(String selSid){
+        ITBox.setText(selSid);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ITBox.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String s2) {
+                selsidstage=s2;
                 try {
                     boolean f = false;
                     ResultSet re = SqlCon.getDatausersShips();

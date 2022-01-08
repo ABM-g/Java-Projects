@@ -4,13 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-
+//DataS class is to make objects for the parks and store data.
 public class DataS{
     private int pid;
     private String sid,date12,pat;
     private double wight,fee=0.0,aFee;
     private boolean crane,puller,pilot;
-
 
     DataS(String sid, double wight, double aFee, boolean crane, boolean puller, boolean pilot,String pat){
         this.sid = sid;
@@ -32,6 +31,7 @@ public class DataS{
         date12 = df2.format(date);
         this.pat=pat;
     }
+    //set and get methods
     public String getSid() {
         return sid;
     }
@@ -92,6 +92,7 @@ public class DataS{
     public void setPat(String pat) {
         this.pat = pat;
     }
+    //calFee method is the method to calculate the final fee that the ship should pay.
     public void calFee(){
         fee=(wight*0.18237)+aFee;
         if(pilot)
@@ -103,6 +104,7 @@ public class DataS{
 
         toSQL();
     }
+    //to sql method work to store the data in the database.
     public void toSQL (){
         String str = "insert into harbor.ports1(sId,pAt,wight,aFee,pDate,pilot,crane,puller,fee) values ('"+ sid +"','"+ pat +"',"+ wight +","+aFee+",now(),"+pilot+","+crane+","+puller+","+fee+");";
         System.out.println(str);
@@ -117,7 +119,7 @@ public class DataS{
             sql.disconnect();
         }
     }
-
+    //method to print the data in the console.
     public void printInConsole(){
         System.out.println("---info---\nsId = "+ sid +"\npAt = "+ pat +"\nweight = "+
                 wight+" T\naFee = "+ aFee+"$\ncrane = "+crane+"\npuller = "+

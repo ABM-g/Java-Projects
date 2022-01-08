@@ -113,6 +113,11 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
+                              <Button id="btn2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showSelect" prefHeight="25.0" prefWidth="44.0" stylesheets="@BasicApplication.css" text="..." GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                              </Button>
                            </children>
                            <padding>
                               <Insets left="12.0" right="12.0" />
