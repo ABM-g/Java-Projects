@@ -19,11 +19,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
-
+//selcteShipCon class is the controller class for selectShip.fxml.
 public class selcteShipCon implements Initializable {
+    //some essential declarations.
     Stage stage;
-    Scene scene;
-    Parent root;
     @FXML
     private TableColumn<ShipD, Double> tableS;
     @FXML
@@ -41,12 +40,14 @@ public class selcteShipCon implements Initializable {
     ObservableList<ShipD> listM;
     int index = -1;
     private static String selsid = "0";
+    //this method exit the select ship window.
     @FXML
     void exit(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.show();
         stage.close();
     }
+    //these methods update the table of the fxml file with the data of the database.
     @FXML
     public void UpdateTable(){
         tableSid.setCellValueFactory(new PropertyValueFactory<>("sid"));
@@ -66,6 +67,7 @@ public class selcteShipCon implements Initializable {
         selectBtn.setVisible(false);
         tableV.setItems(listM);
     }
+    //this method get the selected ship id to the main add page and close the window.
     @FXML
     public void select(ActionEvent event) throws IOException {
         AddCon.selsidstage = selsid;
@@ -73,6 +75,7 @@ public class selcteShipCon implements Initializable {
         stage.show();
         stage.close();
     }
+    //method to get the index of the selected row in the table.
     @FXML
     void getSelected (MouseEvent event){
         index = tableV.getSelectionModel().getSelectedIndex();
@@ -82,7 +85,7 @@ public class selcteShipCon implements Initializable {
         selsid = tableSid.getCellData(index);
         selectBtn.setVisible(true);
     }
-
+    //initialize method start when the fxml get loaded.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UpdateTable();

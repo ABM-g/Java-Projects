@@ -23,8 +23,9 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+//AddCon class is the controller class for add.fxml.
 public class AddCon implements Initializable {
+    //some essential declarations.
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -106,6 +107,7 @@ public class AddCon implements Initializable {
     private String selcRadio="PL1";
     private boolean chSid=false,chW=false,chfee=true;
     static String selsidstage="";
+    //this method add the data the user inputted to the database.
     @FXML
     void add(ActionEvent event) {
             theFee.setVisible(false);
@@ -123,12 +125,14 @@ public class AddCon implements Initializable {
             theFee.setText(("The final fee is : "+d1.getFee()+"$"));
             theFee.setVisible(true);
     }
+    //this method to exit the programme.
     @FXML
     void exit(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.show();
         stage.close();
     }
+    //these methods for switching to other fxml files each connect to a button in the add fxml.
     @FXML
     void switchToAddShip(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("addShip.fxml"));
@@ -153,10 +157,7 @@ public class AddCon implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    @FXML
-    void hidePrombit(ActionEvent event) {
-        infoprombit.setVisible(false);
-    }
+    //this method to show the info of the ship that the user input it id.
     @FXML
     void showPrombit(ActionEvent event) {
         ResultSet re = SqlCon.getDatausersShips();
@@ -175,6 +176,12 @@ public class AddCon implements Initializable {
             e.printStackTrace();
         }
     }
+    //and this method to hide it.
+    @FXML
+    void hidePrombit(ActionEvent event) {
+        infoprombit.setVisible(false);
+    }
+    //this method take you a page to select a ship.
     @FXML
     void showSelect(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("selectShip.fxml"));
@@ -193,6 +200,7 @@ public class AddCon implements Initializable {
         stage.setTitle("Select Ship");
         stage.show();
     }
+    //method to chick if the string is numbers.
     public boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
@@ -204,6 +212,7 @@ public class AddCon implements Initializable {
         }
         return true;
     }
+    //this method enable and disable the add button by checking the input.
     public void btnEn(){
     if (chSid&&chW&&chfee)
         addBtn.setDisable(false);
@@ -212,6 +221,7 @@ public class AddCon implements Initializable {
     public void setSelected(String selSid){
         ITBox.setText(selSid);
     }
+    //initialize method start when the fxml get loaded.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ITBox.textProperty().addListener(new ChangeListener<String>() {

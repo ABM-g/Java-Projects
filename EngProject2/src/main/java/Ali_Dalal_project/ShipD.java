@@ -2,7 +2,7 @@ package Ali_Dalal_project;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+//ShipD class for store ship data in the database.
 public class ShipD {
     private String sid,owner,name;
     private double size;
@@ -13,7 +13,7 @@ public class ShipD {
         this.owner=owner;
         this.size=size;
     }
-
+    //set and get methods
     public String getSid() {
         return sid;
     }
@@ -45,7 +45,7 @@ public class ShipD {
     public void setSize(double size) {
         this.size = size;
     }
-
+    //this is the method to store the data int the database.
     public void toSQL(){
         String str = "insert into harbor.ships(sId,sName,cOwner,sSize) values ('"+ sid +"','"+ name +"','"+owner+"',"+size+");";
         System.out.println(str);

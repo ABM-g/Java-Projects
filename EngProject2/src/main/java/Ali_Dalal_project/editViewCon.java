@@ -18,8 +18,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+//editViewCon class is the controller class for editView.fxml.
 public class editViewCon implements Initializable {
+    //some essential declarations.
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -101,6 +102,7 @@ public class editViewCon implements Initializable {
     private String selcRadio="PL1";
     private int selpId = editCon.getSelpid();
     private boolean chSid=false,chW=false,chfee=true;
+    //this method edit the selected port in the database with the new data.
     @FXML
     void edit(ActionEvent event) throws IOException {
         theFee.setVisible(false);
@@ -139,6 +141,7 @@ public class editViewCon implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    //these methods for switching to other fxml files each connect to a button in the editView fxml.
     @FXML
     void switchToAddShip(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("addShipFromEdit.fxml"));
@@ -155,11 +158,7 @@ public class editViewCon implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    @FXML
-    void hidePrombit(ActionEvent event) {
-        infoprombit.setVisible(false);
-    }
+    //this method to show the info of the ship that the user input it id.
     @FXML
     void showPrombit(ActionEvent event) {
         ResultSet re = SqlCon.getDatausersShips();
@@ -178,6 +177,12 @@ public class editViewCon implements Initializable {
             e.printStackTrace();
         }
     }
+    //and this method to hide it.
+    @FXML
+    void hidePrombit(ActionEvent event) {
+        infoprombit.setVisible(false);
+    }
+    //method to chick if the string is numbers.
     public boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
@@ -189,11 +194,13 @@ public class editViewCon implements Initializable {
         }
         return true;
     }
+    //this method enable and disable the edit button by checking the input.
     public void btnEn(){
         if (chSid&&chW&&chfee)
             addBtn.setDisable(false);
         else addBtn.setDisable(true);
     }
+    //initialize method start when the fxml get loaded.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         rPL1.setToggleGroup(group);

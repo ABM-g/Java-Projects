@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class MysqlConnect {
-    // init database constants
+    // initial database constants
     private static final String DATABASE_DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/harbor";
     private static final String USERNAME = "root";
@@ -15,9 +15,9 @@ public class MysqlConnect {
     private static final String MAX_POOL = "250";
 
 
-    // init connection object
+    // initial connection object
     Connection connection;
-    // init properties object
+    // initial properties object
     private Properties properties;
 
     // create properties

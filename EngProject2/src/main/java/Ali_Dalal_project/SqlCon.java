@@ -4,7 +4,7 @@ import java.sql.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+//SqlCon this class is for get data from the database and send it to other controllers to show it.
 public class SqlCon {
 
     Connection conn = null;

@@ -1,5 +1,7 @@
 package Ali_Dalal_project;
 
+
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -19,26 +21,22 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
-
+//editCon class is the controller class for edit.fxml.
 public class editCon implements Initializable {
+    //some essential declarations.
     private Stage stage;
     private Scene scene;
     private Parent root;
     @FXML
     private TableColumn<DataS, String> tableS;
-
     @FXML
     private TableColumn<DataS, Integer> tableP;
-
     @FXML
     private TableColumn<DataS, String> tablePAt;
-
     @FXML
     private TableColumn<DataS, Double> tableW;
-
     @FXML
     private TableView<DataS> tableV;
-
     @FXML
     private TableColumn<DataS, Double> tableF;
     @FXML
@@ -49,10 +47,10 @@ public class editCon implements Initializable {
     private Button delBtn;
     @FXML
     private Button editBtn;
-
     ObservableList<DataS> listM;
     private int index = -1;
     private static int selpid=0;
+    //these methods for switching to other fxml files each connect to a button in the edit fxml.
     @FXML
     void switchToAdd(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("add.fxml"));
@@ -69,12 +67,14 @@ public class editCon implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    //this method to exit the programme.
     @FXML
     void exit(ActionEvent event) {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.show();
         stage.close();
     }
+    //this method to take you to the editView fxml file.
     @FXML
     void edit(ActionEvent event) throws IOException {
         if(index!=-1) {
@@ -85,6 +85,7 @@ public class editCon implements Initializable {
             stage.show();
         }
     }
+    //this method delete the selected index of the table from the database.
     @FXML
     void delete(ActionEvent event){
         if(index!=-1) {
@@ -108,6 +109,7 @@ public class editCon implements Initializable {
             });
         }
     }
+    //these methods update the table of the fxml file with the data of the database.
     @FXML
     public void UpdateTable(){
         tableP.setCellValueFactory(new PropertyValueFactory<>("pid"));
@@ -133,6 +135,7 @@ public class editCon implements Initializable {
         delBtn.setVisible(false);
         tableV.setItems(listM);
     }
+    //method to get the index of the selected row in the table.
     @FXML
     void getSelected (MouseEvent event){
         index = tableV.getSelectionModel().getSelectedIndex();
@@ -146,7 +149,7 @@ public class editCon implements Initializable {
     public static int getSelpid(){
         return selpid;
     }
-
+    //initialize method start when the fxml get loaded.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         UpdateTable();
